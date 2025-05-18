@@ -1,6 +1,6 @@
 # 🎬 My Movie Catalog
 
-**Language:** **[English]** | [Português](README.pt.md)
+**Language:** **English** | [Português](README.pt.md)
 
 
 This project is a simple web system developed in PHP with MySQL to manage a personal movie catalog. It allows basic CRUD operations (Create, Read, Update, Delete), such as adding movies, genres, and directors, viewing the catalog, editing information, and deleting entries.
