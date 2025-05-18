@@ -4,6 +4,7 @@ This project is a simple web system developed in PHP with MySQL to manage a pers
 
 The goal is to provide a tool to organize a personal collection of watched and unwatched movies, as well as to rate them with personal scores. The project was developed as part of a school assignment.
 
+
 ## ⚙️ Features
   1. Add movies, genres, and directors
   2. Edit records
