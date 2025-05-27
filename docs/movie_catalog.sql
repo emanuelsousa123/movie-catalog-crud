@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 27/05/2025 às 22:52
+-- Tempo de geração: 27/05/2025 às 22:57
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `genres` (
 
 DROP TABLE IF EXISTS `lists`;
 CREATE TABLE IF NOT EXISTS `lists` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `users_id` int NOT NULL,
   PRIMARY KEY (`id`),
