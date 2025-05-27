@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 27/05/2025 às 22:12
+-- Tempo de geração: 27/05/2025 às 22:52
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `directors`;
 CREATE TABLE IF NOT EXISTS `directors` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `users_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `films` (
   `users_id` int NOT NULL,
   `genres_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_films_user_id` (`users_id`),
-  KEY `fk_films_genre_id` (`genres_id`)
+  KEY `fk_films_genre_id` (`genres_id`),
+  KEY `fk_films_user_id` (`users_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `films` (
 
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE IF NOT EXISTS `genres` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `users_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -113,8 +113,8 @@ DROP TABLE IF EXISTS `lists_films`;
 CREATE TABLE IF NOT EXISTS `lists_films` (
   `lists_id` int NOT NULL,
   `films_id` int NOT NULL,
-  KEY `fk_listsfilms_lists_id` (`lists_id`),
-  KEY `fk_listsfilms_films_id` (`films_id`)
+  KEY `fk_listsfilms_films_id` (`films_id`),
+  KEY `fk_listsfilms_lists_id` (`lists_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
