@@ -28,8 +28,10 @@ if (isset($_POST['email_user']) && isset($_POST['password_user'])) {
             echo "E-mail não encontrado.";
         }
 
-    } else {
-        echo "Preencha todos os campos2.";
+    } elseif (empty($email_user)) {
+        echo 'Preencha com seu email';
+    } elseif (empty($password_user)) {
+        echo 'Preencha com sua senha';
     }
 }
 ?>

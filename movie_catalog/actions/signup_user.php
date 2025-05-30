@@ -19,7 +19,9 @@
                 $verificar_email->execute();
 
                 if ($verificar_email->rowCount() > 0) {
-                    echo "Este e-mail já está cadastrado.";
+                    $_SESSION['erro'] = 4;
+                    header("Location: ../index.php");
+                    exit;
                 } else {
                     $hashed_password = password_hash($password_user, PASSWORD_DEFAULT);
 
@@ -33,13 +35,25 @@
                     $_SESSION['user_name'] = $name_user;
                     header("Location: ../pages/films.php");
                     exit;
-            }
+                }
             } else {
-                echo "E-mail inválido!";
+                $_SESSION['erro'] = 5;
+                header("Location: ../index.php");
+                exit;
             }
             
-        } else {
-            echo 'Preencha todos os campos.';
+        } elseif (empty($name_user)) {
+            $_SESSION['erro'] = 1;
+            header("Location: ../index.php");
+            exit;
+        } elseif (empty($email_user)) {
+            $_SESSION['erro'] = 2;
+            header("Location: ../index.php");
+            exit;
+        } elseif (empty($password_user)) {
+            $_SESSION['erro'] = 3;
+            header("Location: ../index.php");
+            exit;
         }
     }
     
