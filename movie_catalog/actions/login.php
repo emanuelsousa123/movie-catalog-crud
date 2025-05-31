@@ -22,16 +22,25 @@ if (isset($_POST['email_user']) && isset($_POST['password_user'])) {
                 header("Location: ../pages/films.php");
                 exit;
             } else {
-                echo "Senha incorreta.";
+                $_SESSION['erro'] = 6;
+                header("Location: ../pages/films.php");
+                exit;
+                // echo "Senha incorreta.";
             }
         } else {
-            echo "E-mail não encontrado.";
+            $_SESSION['erro'] = 9;
+            header("Location: ../pages/films.php");
+            exit;
         }
 
     } elseif (empty($email_user)) {
-        echo 'Preencha com seu email';
+        $_SESSION['erro'] = 7;
+        header("Location: ../pages/films.php");
+        exit;
     } elseif (empty($password_user)) {
-        echo 'Preencha com sua senha';
+        $_SESSION['erro'] = 8;
+        header("Location: ../pages/films.php");
+        exit;
     }
 }
 ?>

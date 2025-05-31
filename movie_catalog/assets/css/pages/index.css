@@ -1,0 +1,66 @@
+@import url('../reset.css');
+@import url('../colors.css');
+
+body {
+    background-color: blue;
+}
+a {
+    height: auto;
+}
+.dark-background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000008a;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.effect-border {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 380px;
+}
+.white-background {
+    height: auto;
+    width: auto;
+    background-color: var(--white);
+    padding: 20px 20px 35px 20px
+}
+.black-border {
+    border: 1px solid var(--black);
+    height: auto;
+}
+.header-signup {
+    display: flex;
+    width: 100%;
+    height: 55px;
+    padding: 0px 20px;
+}
+.logo-box {
+    background-color: violet;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.logo-image {
+    height: 35px;
+}
+.title {
+    background-color: aqua;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title>h1 {
+    font-family: arial;
+    font-weight: 500;
+    font-size: 10px;
+}
+.off-popup {
+    background-color: burlywood;
+    width: 100%;
+}
