@@ -1,0 +1,13 @@
+@import url('colors.css');
+
+.green_button {
+    background-color: var(--green-button);
+    color: var(--white);
+    border: 1px solid black;
+    transition: 0.5s;
+
+}
+.green_button:hover {
+    background-color: #00663a;
+    /* background-color: var(--button-hover); */
+}
