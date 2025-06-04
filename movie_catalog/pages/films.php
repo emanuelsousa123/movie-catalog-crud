@@ -11,6 +11,6 @@
         echo "Bem-vindo, " . htmlspecialchars($_SESSION['user_name']) . '<br>';
     ?>
     <a href="../actions/logout.php">Log out</a><br>
-    <a href="add_films.php">Add films</a>
+    <a href="movie_register_form.php">Add films</a>
 </body>
 </html>
