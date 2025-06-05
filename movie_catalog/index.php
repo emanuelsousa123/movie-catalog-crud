@@ -34,7 +34,7 @@
                         <div class="title">
                             <h1>SIGN UP</h1>
                         </div>
-                        <!-- <div class="off-popup" onclick="fechar_popup('signup')">
+                        <!-- <div class="off-popup" onclick="close_popup('signup')">
                             <button><img src="assets/images/go-out.svg" alt=""></button>
                         </div> -->
                         <div class="off-popup">
@@ -84,7 +84,7 @@
                                 <input class="green_button" type="submit" value="SIGN UP NOW">
                             </div>
                             <div class="direcionar_login">
-                                <!-- <p>Have an account?  <a onclick="abrir_fechar('login','signup')">Log in</a></p> -->
+                                <!-- <p>Have an account?  <a onclick="open_close('login','signup')">Log in</a></p> -->
                                 <p>Have an account?  <a href="">Log in</a></p>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="title">
                             <h1>LOG IN</h1>
                         </div>
-                        <!-- <div class="off-popup" onclick="fechar_popup('login')">
+                        <!-- <div class="off-popup" onclick="close_popup('login')">
                             <button><img src="assets/images/go-out.svg" alt=""></button>
                         </div> -->
                         <div class="off-popup">
@@ -144,7 +144,7 @@
                                 <input class="green_button" type="submit" value="LOG IN NOW">
                             </div>
                             <div class="direcionar_login">
-                                <!-- <p>Don't have a account?  <a onclick="abrir_fechar('signup','login')">Sign up</a></p> -->
+                                <!-- <p>Don't have a account?  <a onclick="open_close('signup','login')">Sign up</a></p> -->
                                 <p>Don't have a account?  <a href=''>Sign up</a></p>
                             </div>
                         </div>
@@ -154,9 +154,9 @@
             </div>
         </div>
     </div>
-    <!-- <button onclick="abrir_popup('login')">Log in</button>
-    <button onclick="abrir_popup('signup')">Sign up</button>
+    <!-- <button onclick="open_popup('login')">Log in</button>
+    <button onclick="open_popup('signup')">Sign up</button>
 
-    <script src="assets/js/fechar_popup.js"></script> -->
+    <script src="assets/js/open_close_popup.js"></script> -->
 </body>
 </html>
