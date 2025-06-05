@@ -7,20 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add films</title>
+    <title>My Movie Catalog - Add films</title>
+    <link rel="stylesheet" href="../assets/css/pages/movie_register_form.css">
 </head>
-<style>
-    .escondido {
-        display: none;
-    }
-    .exibido {
-        display: flex;
-    }
-</style>
 <body>
-    <form action="../actions/process_movie_registration.php" method="post">
+    <form action="../actions/process_movie_registration.php" method="post" enctype="multipart/form-data">
         <label for="title_film">TITLE:</label>
         <input type="text"name="title_film" id="title_film">
+
+        <label for="image_film">Selecione uma imagem:</label><br>
+        <input type="file" id="image_film" name="image_film" accept="image/*"><br><br>
+
+        <img id="preview" src="#" alt="Prévia da imagem" style="max-width: 300px; display: none;">
 
         <label for="synopsis_film">SYNOPSIS:</label>
         <textarea type="text"name="synopsis_film" id="synopsis_film"></textarea>
@@ -53,5 +51,6 @@
 
     </form>
     <script src="../assets/js/exibir.js"></script>
+    <script src="../assets/js/image_film_preview.js"></script>
 </body>
 </html>
