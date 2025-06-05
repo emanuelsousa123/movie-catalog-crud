@@ -24,7 +24,13 @@
     $add_director->execute();
     $directors_id = $conexao->lastInsertId();
 
-    $add_film = $conexao->prepare('INSERT INTO films (title,synopsis,review,year,review_score,genres_id,status,users_id) VALUES (:title_film,:synopsis_film,:review_film,:year_film,:review_score_film,:genre_id,:status,:users_id)');
+    $targetFile = "../uploads/" . uniqid() . "_" . basename($_FILES["image_film"]["name"]);
+    if (!move_uploaded_file($_FILES["image_film"]["tmp_name"], $targetFile)) {
+        die("Erro ao fazer upload do arquivo.");
+    }
+    $image_url = $targetFile;
+
+    $add_film = $conexao->prepare('INSERT INTO films (title,synopsis,review,year,review_score,genres_id,status,users_id,image_url) VALUES (:title_film,:synopsis_film,:review_film,:year_film,:review_score_film,:genre_id,:status,:users_id,:image_url)');
     $add_film->bindValue(':title_film',$title_film);
     $add_film->bindValue(':synopsis_film',$synopsis_film);
     $add_film->bindValue(':review_film',$review_film);
@@ -33,6 +39,7 @@
     $add_film->bindValue(':genre_id',$genre_id);
     $add_film->bindValue(':status',$status);
     $add_film->bindValue(':users_id',$users_id);
+    $add_film->bindValue(':image_url',$image_url);
     $add_film->execute();
     $films_id = $conexao->lastInsertId();
 
