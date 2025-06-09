@@ -1,5 +1,6 @@
 <?php
     require_once '../includes/auth.php';
+    require_once '../includes/config.php'
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 <body>
     <form action="../actions/process_movie_registration.php" method="post" enctype="multipart/form-data">
         <label for="title_film">TITLE:</label>
-        <input type="text"name="title_film" id="title_film">
+        <input type="text"name="title_film" id="title_film" required>
 
         <label for="image_film">Selecione uma imagem:</label><br>
         <input type="file" id="image_film" name="image_film" accept="image/*"><br><br>
@@ -26,8 +27,23 @@
         <label for="year_film">YEAR:</label>
         <input type="number" name="year_film" id="year_film" min="1888" max="2100">
 
+        <!-- <label for="name_genre">GENRE:</label>
+        <input type="text" name="name_genre" id="name_genre"> -->
+
         <label for="name_genre">GENRE:</label>
-        <input type="text" name="name_genre" id="name_genre">
+        <input list="names_genres" name="name_genre" id="name_genre">
+        <datalist id="names_genres">
+            <?php
+                $names_director_bd = $conexao->prepare('SELECT id,name FROM genres WHERE users_id = :user_id');
+                $names_director_bd->bindValue(':user_id',$_SESSION['user_id']);
+                $names_director_bd->execute();
+
+                foreach ($names_director_bd as $value) {
+                    // echo '<option value="' .  htmlspecialchars($value['name']) . '">';
+                    echo '<option value="' . htmlspecialchars($value['name']) . '">';
+                }
+            ?>
+        </datalist>
         
         <label for="name_director">DIRECTOR:</label>
         <input type="text" name="name_director" id="name_director">
@@ -42,12 +58,14 @@
             <label for="review_score_film">REVIEW SCORE:</label>
             <label>Avaliação (1 a 10):</label><br>
             <?php for ($i = 1; $i <= 10; $i++) {?>
-            <input type="radio" id="review_score_film<?= $i ?>" name="review_score_film" value="<?php echo $i; ?>" required>
+            <input type="radio" id="review_score_film<?= $i ?>" name="review_score_film" value="<?php echo $i; ?>">
             <label for="review_score_film<?= $i ?>"><?= $i ?></label>
             <?php } ?>
         </div>
 
         <input type="submit" value="cadastrar">
+
+        
 
     </form>
     <script src="../assets/js/exibir.js"></script>

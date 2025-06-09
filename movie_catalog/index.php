@@ -7,6 +7,11 @@
 
     $erro = $_SESSION['erro'] ?? null;
     unset($_SESSION['erro']);
+
+    if (isset($_SESSION['user_id'])) {
+        header("Location: pages/films.php");
+        exit;
+    }
     
 ?>
 <!DOCTYPE html>
