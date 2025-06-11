@@ -14,7 +14,7 @@
 <body>
     <form action="../actions/process_movie_registration.php" method="post" enctype="multipart/form-data">
         <label for="title_film">TITLE:</label>
-        <input type="text"name="title_film" id="title_film" required>
+        <input type="text"name="title_film" id="title_film" required autocomplete="off">
 
         <label for="image_film">Selecione uma imagem:</label><br>
         <input type="file" id="image_film" name="image_film" accept="image/*"><br><br>
@@ -25,28 +25,50 @@
         <textarea type="text"name="synopsis_film" id="synopsis_film"></textarea>
 
         <label for="year_film">YEAR:</label>
-        <input type="number" name="year_film" id="year_film" min="1888" max="2100">
+        <input type="number" name="year_film" id="year_film" min="1888" max="2100" autocomplete="off">
 
         <!-- <label for="name_genre">GENRE:</label>
         <input type="text" name="name_genre" id="name_genre"> -->
 
         <label for="name_genre">GENRE:</label>
-        <input list="names_genres" name="name_genre" id="name_genre">
+        <input list="names_genres" name="name_genre" id="name_genre" autocomplete="off">
         <datalist id="names_genres">
             <?php
-                $names_director_bd = $conexao->prepare('SELECT id,name FROM genres WHERE users_id = :user_id');
-                $names_director_bd->bindValue(':user_id',$_SESSION['user_id']);
-                $names_director_bd->execute();
+                $names_genre_bd = $conexao->prepare('SELECT id,name FROM genres WHERE users_id = :user_id');
+                $names_genre_bd->bindValue(':user_id',$_SESSION['user_id']);
+                $names_genre_bd->execute();
 
-                foreach ($names_director_bd as $value) {
-                    // echo '<option value="' .  htmlspecialchars($value['name']) . '">';
-                    echo '<option value="' . htmlspecialchars($value['name']) . '">';
+                $genres = $names_genre_bd->fetchAll();
+
+                if ($genres) {
+                    foreach ($genres as $genre) {
+                        echo '<option value="' . htmlspecialchars($genre['name']) .'">';
+                    }
+                } else {
+                    echo "<script>document.getElementById('name_genre').placeholder = 'Nenhum gênero cadastrado';</script>";
                 }
             ?>
         </datalist>
         
         <label for="name_director">DIRECTOR:</label>
-        <input type="text" name="name_director" id="name_director">
+        <input list="names_directors" name="name_director" id="name_director" autocomplete="off">
+        <datalist id="names_directors">
+            <?php
+                $names_director_bd = $conexao->prepare('SELECT id,name FROM directors WHERE users_id = :user_id');
+                $names_director_bd->bindValue(':user_id',$_SESSION['user_id']);
+                $names_director_bd->execute();
+
+                $directors = $names_director_bd->fetchAll();
+
+                if ($directors) {
+                    foreach ($directors as $director) {
+                        echo '<option value="' . htmlspecialchars($director['name']) .'">';
+                    }
+                } else {
+                    echo "<script>document.getElementById('name_genre').placeholder = 'Nenhum diretor cadastrado';</script>";
+                }
+            ?>
+        </datalist>
 
         <input type="checkbox" id="status" name="status" value="1" onclick="exibir()";>
         <label for="status">ASSISTIDO</label>
