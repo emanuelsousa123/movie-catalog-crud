@@ -7,22 +7,46 @@
     $review_film = $_POST['review_film'];
     $year_film = $_POST['year_film'];
     $review_score_film = $_POST['review_score_film'];
-    $name_genre = $_POST['name_genre'];
-    $name_director = $_POST['name_director'];
+    $name_genre = trim($_POST['name_genre']);
+    $name_director = trim($_POST['name_director']);
     $status = $_POST['status'];
     $users_id = $_SESSION['user_id'];
-    
-    $add_genre = $conexao->prepare("INSERT INTO genres (name,users_id) VALUES (:name_genre,:users_id)");
-    $add_genre->bindValue(':name_genre',$name_genre);
-    $add_genre->bindValue(':users_id',$users_id);
-    $add_genre->execute();
-    $genre_id = $conexao->lastInsertId();
 
-    $add_director = $conexao->prepare("INSERT INTO directors (name,users_id) VALUES (:name_director,:users_id)");
-    $add_director->bindValue(':name_director',$name_director);
-    $add_director->bindValue(':users_id',$users_id);
-    $add_director->execute();
-    $directors_id = $conexao->lastInsertId();
+    $verify_genre = $conexao->prepare('SELECT id FROM genres WHERE name = :name_genre AND users_id = :users_id');
+    $verify_genre->bindValue(':name_genre', $name_genre);
+    $verify_genre->bindValue(':users_id', $users_id);
+    $verify_genre->execute();
+
+    $genero_exist = $verify_genre->fetch(PDO::FETCH_ASSOC);
+
+    if ($genero_exist) {
+        $genre_id = $genero_exist['id'];
+    } else {
+        $add_genre = $conexao->prepare('INSERT INTO genres (name, users_id) VALUES (:name_genre, :users_id)');
+        $add_genre->bindValue(':name_genre', $name_genre);
+        $add_genre->bindValue(':users_id', $users_id);
+        $add_genre->execute();
+
+        $genre_id = $conexao->lastInsertId(); 
+    }
+
+    $verify_director = $conexao->prepare('SELECT id FROM directors WHERE name = :name_director AND users_id = :users_id');
+    $verify_director->bindValue(':name_director', $name_director);
+    $verify_director->bindValue(':users_id', $users_id);
+    $verify_director->execute();
+
+    $director_exist = $verify_director->fetch(PDO::FETCH_ASSOC);
+
+    if ($director_exist) {
+        $directors_id = $director_exist['id'];
+    } else {
+        $add_director = $conexao->prepare('INSERT INTO directors (name, users_id) VALUES (:name_director, :users_id)');
+        $add_director->bindValue(':name_director', $name_director);
+        $add_director->bindValue(':users_id', $users_id);
+        $add_director->execute();
+
+        $directors_id = $conexao->lastInsertId(); 
+    }
 
     $targetFile = "../uploads/" . uniqid() . "_" . basename($_FILES["image_film"]["name"]);
     if (!move_uploaded_file($_FILES["image_film"]["tmp_name"], $targetFile)) {
@@ -48,5 +72,6 @@
     $add_director_film->bindValue(':films_id',$films_id);
     $add_director_film->execute();
 
-    echo 'filme cadastrado';
+    header("Location: ../pages/films.php");
+    exit;
 ?>
