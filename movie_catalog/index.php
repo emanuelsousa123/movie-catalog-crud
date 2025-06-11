@@ -50,7 +50,7 @@
                         <div class="box">
                             <div class="campo">
                                 <label class="label_signup" for="username_signup">USERNAME:</label>
-                                <input type="text" id="username_signup" name="name_user" class="campo_entrada">
+                                <input type="text" id="username_signup" name="name_user" class="campo_entrada" autocomplete="off">
                                 <?php
                                     if($erro == 1) {
                                         echo '<div class="box_erro"><p class="erro_message">' . $erros[$erro] . '</p></div>';
@@ -63,7 +63,7 @@
                         <div class="box">
                             <div class="campo">
                                 <label class="label_signup" for="email_signup">E-MAIL:</label>
-                                <input type="text" id="email_signup" name="email_user" class="campo_entrada">
+                                <input type="text" id="email_signup" name="email_user" class="campo_entrada" autocomplete="off">
                             </div>
                             <?php
                             if($erro == 2 || $erro == 4 || $erro == 5) {
@@ -123,7 +123,7 @@
                         <div class="box">
                             <div class="campo">
                                 <label class="label_signup" for="email_login">E-MAIL:</label>
-                                <input type="text" id="email_login" name="email_user" class="campo_entrada">
+                                <input type="text" id="email_login" name="email_user" class="campo_entrada" autocomplete="off">
                             </div>
                             <?php
                                 if($erro == 7 || $erro == 9) {
@@ -135,7 +135,7 @@
                         <div class="box">
                             <div class="campo">
                                 <label class="label_signup "for="password_login">PASSWORD:</label>
-                                <input id="password_login" name="password_user" class="campo_entrada" autocomplete="off" type="password">
+                                <input id="password_login" name="password_user" class="campo_entrada" type="password">
                             </div>
                             <?php
                                 if($erro == 6 || $erro == 8) {
