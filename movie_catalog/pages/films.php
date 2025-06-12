@@ -16,18 +16,28 @@
 
     <div style="display:flex; gap:20px; margin: 20px;">
         <?php
-            // $select_film = $conexao->prepare('SELECT id, title, year, image_url FROM films WHERE users_id = :users_id');
-            $select_film->bindValue('users_id', $_SESSION['user_id']);
+            $select_film = $conexao->prepare('SELECT 
+            films.id, 
+            films.title, 
+            films.year, 
+            films.image_url, 
+            directors.name AS director_name
+            FROM films 
+            JOIN directors_films ON directors_films.films_id = films.id
+            JOIN directors ON directors.id = directors_films.directors_id
+            ORDER BY films.id DESC'
+            );
             $select_film->execute();
             $films = $select_film->fetchAll();
 
             foreach ($films as $film) {
                 echo 
                 '<div style="border: solid black 1px; width:100px;">
-                    <a href="film_information.php?id=' . urlencode($film['id']) . '">
+                    <a href="film_information.php?film_id=' . urlencode($film['id']) . '">
                         <img src="' . htmlspecialchars($film['image_url']) . '" alt="ham?" height="auto" width="100px">
                         <h3>' . htmlspecialchars($film['title']) . '</h3>
                     </a>
+                    <p>By ' . htmlspecialchars($film['director_name']) . '</p>
                     <p>' . htmlspecialchars($film['year']) . '</p></div>';
             }
         ?>
