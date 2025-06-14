@@ -3,6 +3,11 @@
     require_once '../includes/auth.php';
     require_once '../includes/config.php';
 
+    if (empty($film) || !isset($_GET['film_id'])) {
+        echo 'Filme não encontrado </br>';
+        echo '<a href="films.php">Voltar</a>';
+    } else {
+
     echo $_GET['film_id'];
 
     $select_film = $conexao->prepare('SELECT 
@@ -26,6 +31,8 @@
     $select_film->bindValue(':id', $_GET['film_id']);
     $select_film->execute();
     $film = $select_film->fetch(PDO::FETCH_ASSOC);
+
+    
 ?>
 
 <html lang="en">
@@ -54,7 +61,7 @@
     <button onclick="desabilitar()">Editar</button>
     <form action="../actions/update_film.php" method="POST">
         <input type="hidden" name="film_id" value="<?= htmlspecialchars($film['film_id']) ?>">
-        
+
         <label for="title">Title:</label>
         <input class="input_update" style="border:none;" type="text" name="title" id="title" value="<?= htmlspecialchars($film['title']) ?>">
 
@@ -119,6 +126,8 @@
         <input type="submit" value="update" style='display:none;' id="update">
     </form>
 
+    <a href="../actions/delete_film.php?film_id= <?= $_GET['film_id']?>&director_id= <?= $film['director_id'] ?>">apagar filme</a>
+
     <a href="films.php">Voltar</a>
 
 
@@ -163,5 +172,7 @@
         //     d.style.display ="inline";
         // }
     </script>
+
+<?php }?>
 </body>
 </html>
