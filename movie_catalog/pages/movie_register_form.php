@@ -69,6 +69,8 @@
                 }
             ?>
         </datalist>
+        
+        
 
         <input type="checkbox" id="status" name="status" value="1" onclick="exibir()";>
         <label for="status">ASSISTIDO</label>
