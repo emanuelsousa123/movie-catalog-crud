@@ -14,9 +14,11 @@ DROP TABLE IF EXISTS `directors_films`;
 CREATE TABLE IF NOT EXISTS `directors_films` (
   `films_id` int NOT NULL,
   `directors_id` int NOT NULL,
+  PRIMARY KEY (`films_id`, `directors_id`),
   KEY `fk_directorsfilms_director_id` (`directors_id`),
   KEY `fk_directorsfilms_film_id` (`films_id`)
 );
+
 
 DROP TABLE IF EXISTS `films`;
 CREATE TABLE IF NOT EXISTS `films` (
@@ -58,6 +60,7 @@ DROP TABLE IF EXISTS `lists_films`;
 CREATE TABLE IF NOT EXISTS `lists_films` (
   `lists_id` int NOT NULL,
   `films_id` int NOT NULL,
+  PRIMARY KEY (`lists_id`, `films_id`),
   KEY `fk_listsfilms_films_id` (`films_id`),
   KEY `fk_listsfilms_lists_id` (`lists_id`)
 );
