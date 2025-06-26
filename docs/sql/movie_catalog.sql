@@ -5,9 +5,7 @@ DROP TABLE IF EXISTS `directors`;
 CREATE TABLE IF NOT EXISTS `directors` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `users_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_director_user_id` (`users_id`)
+  PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `directors_films`;
@@ -30,20 +28,16 @@ CREATE TABLE IF NOT EXISTS `films` (
   `year` int DEFAULT NULL,
   `review_score` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
-  `users_id` int NOT NULL,
   `genres_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_films_genre_id` (`genres_id`),
-  KEY `fk_films_user_id` (`users_id`)
+  KEY `fk_films_genre_id` (`genres_id`)
 );
 
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE IF NOT EXISTS `genres` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `users_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_genres_user_id` (`users_id`)
+  PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `lists`;
@@ -74,19 +68,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `directors`
-  ADD CONSTRAINT `fk_director_user_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
 ALTER TABLE `directors_films`
   ADD CONSTRAINT `fk_directorsfilms_director_id` FOREIGN KEY (`directors_id`) REFERENCES `directors` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `fk_directorsfilms_film_id` FOREIGN KEY (`films_id`) REFERENCES `films` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE `films`
-  ADD CONSTRAINT `fk_films_genre_id` FOREIGN KEY (`genres_id`) REFERENCES `genres` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `fk_films_user_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE `genres`
-  ADD CONSTRAINT `fk_genres_user_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `fk_films_genre_id` FOREIGN KEY (`genres_id`) REFERENCES `genres` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE `lists`
   ADD CONSTRAINT `fk_lists_users_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
