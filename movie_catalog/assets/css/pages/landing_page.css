@@ -1,0 +1,163 @@
+@import url('../reset.css?v=3');
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    height: 100vh;
+    width: auto;
+    background-image: url('../../images/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #0f7fe7;
+    background-attachment: fixed;
+
+}
+.tudo {
+    padding: 10vh 10vw;
+    display: flex;
+    justify-content: center;
+}
+
+.content-sheet {
+    background-color: #fcf2e6;
+    width: 1120px;
+    /* height: 500px; */
+    border: 2px solid #030B19;
+}
+
+.background-sheets {
+    background-color: #ff9f2a;
+    border: 2px solid #030B19;
+    width: 1080px;
+    height: 500px;
+    position: absolute;
+    z-index: -1;
+}
+
+.bs1 {
+    transform: rotate(1deg);
+}
+
+.navbar {
+    padding: 30px 40px;
+    display: flex;
+    border-bottom: 2px solid #030B19;
+}
+
+.logo>a>img {
+    height: auto;
+    width: 80px;
+}
+
+.search-bar {
+   display: flex;
+   align-items: center;
+   padding: 0px 50px;
+}
+.search-bar>div {
+    border: 2px solid #030B19; 
+    border-radius: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.search-bar>div>input {
+    all: unset;
+}
+.search-bar>div>input::placeholder {
+    font-size: 14px;
+}
+
+.space {
+    width: 100%;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+button {
+    all: unset;
+    font-size: 17px;
+}
+.login-button {
+    padding: 0px 15px;
+}
+.login-button>button {
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 7px 12px;
+    transition: 0.3s;
+}
+.login-button>button:hover {
+    border: 1px solid #030B19;
+}
+.button-black {
+    background-color: #030B19;
+    border-radius: 20px;
+    padding: 7px 12px;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+.button-black:hover  {
+    background-color: transparent;
+    color: #030B19;
+    border: 2px solid #030B19;
+}
+.hamburger-menu {
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    padding: 40px 60px;
+    justify-content: space-between;
+}
+
+.card_hero {
+    background-color: #faf620;
+    box-shadow: -6px 6px #030b1991;
+    width: 500px;
+    padding: 40px;
+    transform: rotate(-3deg);
+    border: 2px solid #030B19;
+}
+.main-heading>h1 {
+    font-size: 40px;
+    font-weight: 500;
+    color: #030B19;
+    font-family:"Roboto Condensed", sans-serif;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+.subheading {
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+.cta-button {
+    display: flex;
+    justify-content: end;
+}
+.cta-button>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cta-button>button>span>img {
+    margin-left: 10px;
+    height: auto;
+    width: 20px;
+    color: #030B19;
+    transition: 0.3s;
+}
+.cta-button>button:hover>span>img {
+    filter: brightness(0) saturate(100%);
+}

@@ -29,13 +29,6 @@
     $update_film->execute();
 
 
-    // $update_director = $conexao->prepare('UPDATE directors
-    // SET name = :director_name
-    // WHERE id = :director_id');
-    // $update_director->bindValue(':director_id', $director_id);
-    // $update_director->bindValue(':director_name', $director_name);
-    // $update_director->execute();
-
     $verify_director = $conexao->prepare('SELECT id FROM directors WHERE name = :director_name');
     $verify_director->bindValue(':director_name', $director_name);
     $verify_director->execute();
@@ -46,9 +39,8 @@
         $directors_id = $director_exist['id'];
 
     } else {
-        $add_director = $conexao->prepare('INSERT INTO directors (name, users_id) VALUES (:director_name, :users_id)');
+        $add_director = $conexao->prepare('INSERT INTO directors (name) VALUES (:director_name)');
         $add_director->bindValue(':director_name', $director_name);
-        $add_director->bindValue(':users_id', $users_id);
         $add_director->execute();
 
         $directors_id = $conexao->lastInsertId();

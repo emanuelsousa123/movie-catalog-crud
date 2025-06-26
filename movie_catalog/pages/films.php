@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php require_once '../includes/auth.php'; ?>
-    <?php require_once '../includes/config.php'; ?>
+    <?php 
+        require_once '../includes/config.php';
+        require_once '../includes/auth.php';
+        $path_base = '../';
+    ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/movie_catalog.css?<?= time()?>">
+    <link rel="stylesheet" href="../assets/css/pages/films.css?<?= time()?>">
     <title>My Movie Catalog - Films</title>
 </head>
 <body>
-    <?php
-        echo "Bem-vindo, " . htmlspecialchars($_SESSION['user_name']) . '<br>';
-    ?>
-    <a href="../actions/logout.php">Log out</a><br>
-    <a href="movie_register_form.php">Add films</a>
+    <div class="all-content">
+        <div class="content-sheet">
+            <header class="navbar">
+                <div class="logo">
+                    <a href="teste2.php"><img src="../assets/images/logo-image.svg" alt="logo_image"></a>
+                </div>
 
-    <div style="display:flex; gap:20px; margin: 20px;">
-        <?php
-            $select_film = $conexao->prepare('SELECT 
-            films.id, 
-            films.title, 
-            films.year, 
-            films.image_url, 
-            directors.name AS director_name
-            FROM films 
-            JOIN directors_films ON directors_films.films_id = films.id
-            JOIN directors ON directors.id = directors_films.directors_id
-            ORDER BY films.id DESC'
-            );
-            $select_film->execute();
-            $films = $select_film->fetchAll();
+                <div class="search-bar">
+                    <div tabindex="0">
+                        <input type="text" placeholder="Search...">
+                        <div>
+                            <img src="../assets/images/icons/search-icon.svg" alt="">
+                        </div>
+                    </div>
+                </div>
 
-            foreach ($films as $film) {
-                echo 
-                '<div style="border: solid black 1px; width:100px;">
-                    <a href="film_information.php?film_id=' . urlencode($film['id']) . '">
-                        <img src="' . htmlspecialchars($film['image_url']) . '" alt="ham?" height="auto" width="100px">
-                        <h3>' . htmlspecialchars($film['title']) . '</h3>
-                    </a>
-                    <p>By ' . htmlspecialchars($film['director_name']) . '</p>
-                    <p>' . htmlspecialchars($film['year']) . '</p></div>';
-            }
-        ?>
+                <div class="space"></div>
+                
+                <nav class="nav-menu">
+                    <a href="films.php">Films</a>
+                    <a href="#">Lists</a>
+                    <a href="#">Directors</a>
+                    <div class="user_profile">
+                        <a href="user_profile.php?user_id=<?= $_SESSION['user_id'] ?>"><img src="../assets/images/icons/user-icon.svg" alt=""></a>
+                    </div>
+                    <a class="logout" href="../actions/logout.php">Log out</a>
+                </nav>
+            </header>
+            <div class="intro">
+                <h1>Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>. Here’s what we’ve been watching…</h1>
+                <a href="movie_register_form.php">Add films</a>
+            </div>
+            <?php include '../includes/movie_catalog.php'; ?>
+        </div>
     </div>
-    <div style="border: solid black 1px;width:100px;"><img src="../uploads/6848cf323a535_gogh174.jpg" alt="ham?" height="auto" width="100px"><h3>title film</h3><p>year</p></div>
 </body>
 </html>

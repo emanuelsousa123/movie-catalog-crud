@@ -1,6 +1,6 @@
 @import url('colors.css');
 
-.green_button {
+/* .green_button {
     background-color: var(--green-button);
     color: var(--white);
     border: 1px solid black;
@@ -9,5 +9,5 @@
 }
 .green_button:hover {
     background-color: #00663a;
-    /* background-color: var(--button-hover); */
-}
+    background-color: var(--button-hover);
+} */

@@ -15,8 +15,7 @@
     $delete_films_diretors->bindValue(':director_id', $director_id);
     $delete_films_diretors->execute();
 
-
-    echo 'joia';
-    // header("Location: ../pages/films.php");
-    // exit();
-?>
+echo 'joia';
+header("Location: ../pages/films.php");
+exit();
+ ?>

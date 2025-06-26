@@ -1,6 +1,260 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('../reset.css');
+
 .escondido {
     display: none;
 }
 .exibido {
+    display: inline-block;
+}
+
+
+body {
+    height: 100vh;
+    width: auto;
+    background-image: url('../../images/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #0f7fe7;
+    background-attachment: fixed;
+
+}
+.all-content {
+    padding: 10vh 10vw;
     display: flex;
+    justify-content: center;
+}
+
+.content-sheet {
+    background-color: #fcf2e6;
+    width: 1120px;
+    border: 2px solid #030B19;
+}
+
+.navbar {
+    padding: 30px 40px;
+    display: flex;
+    border-bottom: 2px solid #030B19;
+}
+.logo>a>img {
+    height: auto;
+    width: 80px;
+}
+.search-bar {
+   display: flex;
+   align-items: center;
+   padding: 0px 50px;
+}
+.search-bar>div {
+    border: 2px solid #030B19; 
+    border-radius: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.search-bar>div>input {
+    all: unset;
+}
+.search-bar>div>input::placeholder {
+    font-size: 14px;
+}
+.space {
+    width: 100%;
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+.nav-menu>a {
+    margin: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #030B19;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+.nav-menu>a:hover {
+    text-decoration: underline;
+}
+.user_profile {
+    border: 2px solid #030B19;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+}
+.user_profile:hover {
+    background-color: #eee6dd;
+}
+.user_profile>a>img {
+    height: 30px;
+    width: auto;
+}
+.logout {
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+.all-form {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 4rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #030B19;
+    gap: 3rem;
+}
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form label {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form select,
+form textarea {
+    padding: 10px 15px;
+    border: 2px solid #030B19;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    font-family: 'Archivo', sans-serif;
+    width: 100%;
+    max-width: 500px;
+}
+
+form input[type="file"] {
+    padding: 8px;
+    background-color: #f0f0f0;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+form img#preview {
+    margin-top: 10px;
+    border: 2px solid #030B19;
+    border-radius: 10px;
+}
+
+form select {
+    cursor: pointer;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #0f7fe7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    max-width: 200px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0d64b3;
+}
+
+form input[type="submit"] {
+    background-color: #030B19;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 12px 25px;
+    margin-top: 2rem;
+    cursor: pointer;
+    width: fit-content;
+}
+
+form input[type="submit"]:hover {
+    background-color: #1c1c2b;
+}
+
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+form .escondido label {
+    margin-top: 10px;
+}
+
+
+
+
+.form > div {
+    margin-bottom: 1.5rem;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.image_film label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.image_film input {
+    margin-bottom: 1rem;
+}
+
+
+.form button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+#box {
+    margin-top: 1rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid #030B19;
+}
+
+#box label {
+    margin-top: 0.8rem;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+}
+.score>label {
+    margin: 10px;
+}
+
+
+form img#preview {
+    display: block;
+    margin-top: 1rem;
+    max-width: 300px;
+    border-radius: 12px;
+    border: 2px solid #030B19;
 }

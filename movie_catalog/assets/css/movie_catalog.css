@@ -1,0 +1,84 @@
+.movie-catalog {
+    margin: 20px;
+    border: 2px solid #030a17;
+    border-radius: 20px;
+    background-color: #ff6464;
+    padding-bottom: 40px;
+}
+
+.catalog-header {
+    padding: 2rem 4rem 0;
+    color: #030b19;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.catalog-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+.catalog-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.filters {
+    padding: 30px 60px 20px;
+    border-bottom: 2px solid #030b19;
+    display: flex;
+    align-items: center;
+}
+.filters>select {
+    background-color: #ffffff;
+    border: 2px solid #030b19;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow-y: auto;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 5px 40px 5px 10px;
+    margin-right: 10px;
+}
+.filters>select>option {
+    text-transform: uppercase;
+}
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 116px;
+}
+.movies>a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    margin: 10px;
+}
+.card-movie {
+    height: 225px;
+    width: 400px;
+    border: 2px solid #030b19;
+    border-radius: 20px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #0f7fe7;
+    display: flex;
+    align-items: end;
+    padding-left: 20px;
+}
+.movie-title {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.director_year>p {
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 10px;
+}

@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <?php
-    require_once '../includes/auth.php';
+    // require_once '../includes/auth.php';
     require_once '../includes/config.php';
-
-    if (empty($film) || !isset($_GET['film_id'])) {
-        echo 'Filme não encontrado </br>';
-        echo '<a href="films.php">Voltar</a>';
-    } else {
+    session_start();
 
     echo $_GET['film_id'];
 
@@ -45,20 +41,23 @@
             color: #000;
             background-color: #fff;
             cursor: text;
-            pointer-events: none; /* para manter desativado mas parecer "normal" */
+            pointer-events: none;
         }
         select[disabled] {
             opacity: 1; 
-            /* background-color: white; */
             color: black;
             border: 1px solid #ccc;
             cursor: text;
-            pointer-events: none; /* mantém desativado, mas sem visual feio */
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
+    <?php
+        if (isset($_SESSION['user_id'])) {  
+    ?>
     <button onclick="desabilitar()">Editar</button>
+    <?php } ?>
     <form action="../actions/update_film.php" method="POST">
         <input type="hidden" name="film_id" value="<?= htmlspecialchars($film['film_id']) ?>">
 
@@ -67,9 +66,6 @@
 
         <label for="year">Year:</label>
         <input class="input_update" style="border:none;" type="text" name="year" id="year" value="<?= htmlspecialchars($film['year']) ?>">
-
-        <!-- <label for="director_name">Director:</label>
-        <input class="input_update" style="border:none;" type="text" name="director_name" id="director_name" value="<?= htmlspecialchars($film['director_name']) ?>"> -->
             
         DIRECTOR:
         <select class="input_update" name="director_name" id="select_director">
@@ -125,9 +121,11 @@
 
         <input type="submit" value="update" style='display:none;' id="update">
     </form>
-
+<?php
+    if (isset($_SESSION['user_id'])) {
+?>
     <a href="../actions/delete_film.php?film_id= <?= $_GET['film_id']?>&director_id= <?= $film['director_id'] ?>">apagar filme</a>
-
+    <?php } ?>
     <a href="films.php">Voltar</a>
 
 
@@ -173,6 +171,6 @@
         // }
     </script>
 
-<?php }?>
+<?php ?>
 </body>
 </html>

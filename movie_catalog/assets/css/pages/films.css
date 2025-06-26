@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('../reset.css');
+
+body {
+    height: 100vh;
+    width: auto;
+    background-image: url('../../images/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #0f7fe7;
+    background-attachment: fixed;
+
+}
+.all-content {
+    padding: 10vh 10vw;
+    display: flex;
+    justify-content: center;
+}
+
+.content-sheet {
+    background-color: #fcf2e6;
+    width: 1120px;
+    border: 2px solid #030B19;
+}
+
+.navbar {
+    padding: 30px 40px;
+    display: flex;
+    border-bottom: 2px solid #030B19;
+}
+.logo>a>img {
+    height: auto;
+    width: 80px;
+}
+.search-bar {
+   display: flex;
+   align-items: center;
+   padding: 0px 50px;
+}
+.search-bar>div {
+    border: 2px solid #030B19; 
+    border-radius: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.search-bar>div>input {
+    all: unset;
+}
+.search-bar>div>input::placeholder {
+    font-size: 14px;
+}
+.space {
+    width: 100%;
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+.nav-menu>a {
+    margin: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #030B19;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+.nav-menu>a:hover {
+    text-decoration: underline;
+}
+.user_profile {
+    border: 2px solid #030B19;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+}
+.user_profile:hover {
+    background-color: #eee6dd;
+}
+.user_profile>a>img {
+    height: 30px;
+    width: auto;
+}
+.logout {
+    margin-right: 0px;
+    margin-left: 10px;
+}
+.intro {
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.intro>h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.intro>a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #007BFF;
+    border: 2px solid #030B19;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.intro>a:hover {
+    background-color: transparent;
+    color: #030B19;
+}

@@ -23,23 +23,23 @@ if (isset($_POST['email_user']) && isset($_POST['password_user'])) {
                 exit;
             } else {
                 $_SESSION['erro'] = 6;
-                header("Location: ../pages/films.php");
+                header("Location: ../index.php");
                 exit;
                 // echo "Senha incorreta.";
             }
         } else {
             $_SESSION['erro'] = 9;
-            header("Location: ../pages/films.php");
+            header("Location: ../index.php");
             exit;
         }
 
     } elseif (empty($email_user)) {
         $_SESSION['erro'] = 7;
-        header("Location: ../pages/films.php");
+        header("Location: ../index.php");
         exit;
     } elseif (empty($password_user)) {
         $_SESSION['erro'] = 8;
-        header("Location: ../pages/films.php");
+        header("Location: ../index.php");
         exit;
     }
 }

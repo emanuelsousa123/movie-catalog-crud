@@ -1,4 +1,4 @@
-function pen_popup(type) {
+function open_popup(type) {
     document.getElementById("dark-background").style.display = 'flex';
     document.getElementById(type).style.display = 'flex';
 }
